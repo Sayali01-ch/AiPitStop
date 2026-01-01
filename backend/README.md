@@ -17,6 +17,10 @@ Run tests
 Notes
 - The `AiService` contains placeholder calls to Groq and Stability APIs; update request URIs and payloads to match provider docs and set `GROQ_API_KEY` / `STABILITY_API_KEY` as env variables.
 
+Redirect behavior
+- The backend root `/` now redirects to the frontend SPA by default at `http://localhost:3000/`.
+- Override using `FRONTEND_URL` environment variable when running (e.g., `-e FRONTEND_URL=https://app.example.com/`).
+
 Docker
 - docker build -t aipitstop-backend .
 - docker run -p 8080:8080 -e GROQ_API_KEY=... -e STABILITY_API_KEY=... aipitstop-backend

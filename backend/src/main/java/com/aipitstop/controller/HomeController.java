@@ -17,11 +17,15 @@ import java.util.Map;
 @Controller
 public class HomeController implements ErrorController {
 
-    @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
-    public ResponseEntity<String> home() {
-        String body = "<html><body><h1>AiPitStop Backend</h1><p>Available endpoints: <code>/api/ai/text</code> (POST), <code>/api/ai/image</code> (POST), <code>/api/doc/extract</code> (POST)." +
-                "<br/>Frontend runs on port 3000 by default.</p></body></html>";
-        return ResponseEntity.ok().body(body);
+    @org.springframework.beans.factory.annotation.Value("${FRONTEND_URL:http://localhost:3000/}")
+    private String frontendUrl;
+
+    @GetMapping(value = "/")
+    public ResponseEntity<Void> home() {
+        // Redirect to the frontend SPA (configurable via FRONTEND_URL env var)
+        return ResponseEntity.status(org.springframework.http.HttpStatus.FOUND)
+                .header(org.springframework.http.HttpHeaders.LOCATION, frontendUrl)
+                .build();
     }
 
     @RequestMapping(value = "/error", produces = MediaType.APPLICATION_JSON_VALUE)
