@@ -51,6 +51,7 @@ export default function App(){
     setImageData(null)
     try{
       const resp = await fetch('/api/ai/image', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({prompt})})
+      if (!resp.ok) throw new Error('Image generation failed: ' + resp.statusText)
       const j = await resp.json()
       setImageData(j.image || null)
       saveHistory(prompt)
