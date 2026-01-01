@@ -1,0 +1,27 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+
+# Maven
+log/
+.settings/
+.idea/
+.project
+*.iml
+
+# Node
+node_modules/
+/dist
+
+# OS
+.DS_Store
+.vscode/
+
+# Logs
+*.log
+
+# Env
+.env

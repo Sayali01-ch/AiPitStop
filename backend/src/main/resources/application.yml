@@ -1,0 +1,13 @@
+server:
+  port: 8080
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+# Environment variables expected:
+# GROQ_API_KEY, STABILITY_API_KEY, STABILITY_API_URL
+
